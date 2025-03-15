@@ -1,7 +1,5 @@
 import json
 import socket
-#from typing import Dict, Self, Tuple
-
 
 class HttpRequest:
     def __init__(self, method, path, headers, body):
@@ -24,38 +22,12 @@ class HttpRequest:
 
         return request_b
 
-   # @classmethod
-    #def from_bytes(cls, binary_data: bytes) -> Self:
-     #   text = binary_data.decode()
-      #  split_other_body = text.split('\r\n\r\n', 1)
-
-       # other = split_other_body[0].split('\r\n')
-       # method, path, _ = other[0].split(' ', 2)
-       # headers = {key: val for key, val in (line.split(': ', 1) for line in other[1:])}
-
-       # body_json = split_other_body[1] if len(split_other_body) > 1 else {}
-       # body = json.loads(body_json) if int(headers['Content-Length']) > 0 else {}
-
-       # return cls(method, path, headers, body)
-
-
 class HttpResponse:
     def __init__(self, status_code, headers, body):
         self.status_code = status_code
         self.headers = headers
         self.body = body or {}
 
-    #def to_bytes(self) -> bytes:
-     #   body_json = json.dumps(self.body)
-      #  headers_str = '\r\n'.join(f'{key}: {val}' for key, val in self.headers.items())
-       # response = (
-        #    f'HTTP/1.1 {self.status_code} OK\r\n'
-         #   f'{headers_str}\r\n\r\n'
-          #  f'{body_json}'
-        #)
-        #return response.encode()
-
-    #@classmethod
     def from_bytes(cls, response_b):
         text = response_b.decode()
         split_other_body = text.split('\r\n\r\n', 1)
