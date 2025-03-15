@@ -1,0 +1,8 @@
+#toml configuration
+
+[server]
+url="http://localhost:4010"
+
+[user]
+username='username'
+password='password'
